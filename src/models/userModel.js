@@ -70,7 +70,7 @@ const UserSchema = new mongoose.Schema(
       type: String,
       maxlength: 1000,
     },
-    distance: {
+    dist: {
       type: Number,
     },
   },
