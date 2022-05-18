@@ -55,6 +55,7 @@ async function update(req, res) {
     if ("x_coordinate" in req.body) user.x_coordinate = req.body.x_coordinate;
     if ("y_coordinate" in req.body) user.y_coordinate = req.body.y_coordinate;
     if ("dist" in req.body) user.dist = req.body.dist;
+    if ("area" in req.body) user.area = req.body.area;
 
     if (req.file) {
       const uploadImg = await cloudinary.uploader.upload(req.file.path, {
