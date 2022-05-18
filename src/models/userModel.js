@@ -2,7 +2,6 @@ import mongoose from "mongoose";
 import bcrypt from "bcrypt";
 import uniqueArray from "mongoose-unique-array";
 
-
 const UserSchema = new mongoose.Schema(
   {
     firstName: {
@@ -11,11 +10,6 @@ const UserSchema = new mongoose.Schema(
       maxlength: 50,
     },
     lastName: {
-      type: String,
-      required: true,
-      maxlength: 50,
-    },
-    phoneNumber: {
       type: String,
       required: true,
       maxlength: 50,
@@ -30,12 +24,58 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    role: {
+    gender: { type: Boolean, required: true },
+    age: { type: Number, required: true, min: 0, max: 4 },
+    fitness_level: { type: Number, required: true, min: 0, max: 4 },
+    excercice_frequency: { type: Number, required: true, min: 0, max: 5 },
+    participate_running: {
       type: String,
-      enum: ["user", "admin"],
-      default: "user",
+      maxlength: 50,
     },
-    productsIds: [String]
+    participate_gym: {
+      type: String,
+      maxlength: 50,
+    },
+    participate_team: {
+      type: String,
+      maxlength: 50,
+    },
+    participate_dance: {
+      type: String,
+      maxlength: 50,
+    },
+    participate_yoga: {
+      type: String,
+      maxlength: 50,
+    },
+    participate_swimming: {
+      type: String,
+      maxlength: 50,
+    },
+    participate_lifting_weights: {
+      type: String,
+      maxlength: 50,
+    },
+    time_of_earlymorning: {
+      type: String,
+      required: true,
+      maxlength: 50,
+    },
+    time_of_excercice_afternoon: {
+      type: String,
+      maxlength: 50,
+    },
+    time_of_evening: {
+      type: String,
+      maxlength: 50,
+    },
+    health: {
+      type: Boolean,
+    },
+    location: {
+      type: Boolean,
+      required: true,
+    },
   },
   { collection: "users" }
 );
