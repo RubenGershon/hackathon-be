@@ -27,15 +27,13 @@ async function login(req, res) {
       sameSite: "lax",
     });
 
-    userData.password = null
+    userData.password = null;
     res.status(200).send({
       status: "ok",
       data: {
         id: userData._id,
         email: userData.email,
-        firstName: userData.firstName,
-        lastName: userData.lastName,
-        phoneNumber: userData.phoneNumber,
+        userName: userData.userName,
       },
     });
   } else {

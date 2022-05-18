@@ -9,7 +9,7 @@ async function createUser(data) {
       return { status: "error", message: "unknown" };
     }
   } catch (error) {
-    return { status: "error", message: "email already in use" };
+    return { status: "error", message: error };
   }
 }
 
@@ -18,10 +18,7 @@ async function findUser(
   userDataToReturn = {
     _id: 1,
     email: 1,
-    role: 1,
-    firstName: 1,
-    lastName: 1,
-    phoneNumber: 1,
+    userName: 1,
   }
 ) {
   try {

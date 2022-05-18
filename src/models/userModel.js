@@ -4,12 +4,7 @@ import uniqueArray from "mongoose-unique-array";
 
 const UserSchema = new mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      required: true,
-      maxlength: 50,
-    },
-    lastName: {
+    userName: {
       type: String,
       required: true,
       maxlength: 50,
@@ -24,10 +19,10 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    gender: { type: Boolean, required: true },
-    age: { type: Number, required: true, min: 0, max: 4 },
-    fitness_level: { type: Number, required: true, min: 0, max: 4 },
-    excercice_frequency: { type: Number, required: true, min: 0, max: 5 },
+    gender: { type: Boolean },
+    age: { type: Number, min: 0, max: 4 },
+    fitness_level: { type: Number, min: 0, max: 4 },
+    exercise_frequency: { type: Number, min: 0, max: 5 },
     participate_running: {
       type: String,
       maxlength: 50,
@@ -56,16 +51,15 @@ const UserSchema = new mongoose.Schema(
       type: String,
       maxlength: 50,
     },
-    time_of_earlymorning: {
+    time_of_excercice_earlymorning: {
       type: String,
-      required: true,
       maxlength: 50,
     },
     time_of_excercice_afternoon: {
       type: String,
       maxlength: 50,
     },
-    time_of_evening: {
+    time_of_excercice_evening: {
       type: String,
       maxlength: 50,
     },
@@ -73,8 +67,7 @@ const UserSchema = new mongoose.Schema(
       type: Boolean,
     },
     location: {
-      type: Boolean,
-      required: true,
+      type: String,
     },
   },
   { collection: "users" }

@@ -15,11 +15,8 @@ async function authLoginValidation(req, res, next) {
   let response = await authQueries.findUser(body.email, {
     _id: 1,
     email: 1,
-    role: 1,
     password: 1,
-    firstName: 1,
-    lastName: 1,
-    phoneNumber: 1,
+    userName: 1,
   });
   if (response.status !== "ok") {
     res.status(404).send(response);
