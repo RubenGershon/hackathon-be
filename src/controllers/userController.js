@@ -2,8 +2,21 @@ import { findUserById } from "../queries/userQueries.js";
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
 
-function getUser(req, res) {
-  res.status(200).json({ status: "ok", data: req.user });
+import axios from "axios";
+const api = axios.create({
+  baseURL: "http://ec2-3-121-232-127.eu-central-1.compute.amazonaws.com:8080/",
+});
+
+async function getUser(req, res) {
+  const response = await findUserById(req.user._id);
+  const user = response.data.toObject();
+  delete user.password;
+  res.status(200).json({ status: "ok", data: user });
+}
+
+async function findMatch(req, res) {
+  const response = await api.get("get_matches?id=1&dist=5")
+  res.status(200).json({ status: "ok", data:"blabla" });
 }
 
 async function update(req, res) {
@@ -31,16 +44,17 @@ async function update(req, res) {
       user.participate_yoga = req.body.participate_yoga;
     if ("participate_lifting_weights" in req.body)
       user.participate_lifting_weights = req.body.participate_lifting_weights;
-    if ("time_of_exercises_earlymorning" in req.body)
-      user.time_of_exercises_earlymorning =
-        req.body.time_of_exercises_earlymorning;
-    if ("time_of_exercises_afternoon" in req.body)
-      user.time_of_exercises_afternoon = req.body.time_of_exercises_afternoon;
-    if ("time_of_exercises_evening" in req.body)
-      user.time_of_exercises_evening = req.body.time_of_exercises_evening;
+    if ("time_of_exercise_early_morning" in req.body)
+      user.time_of_exercise_early_morning =
+        req.body.time_of_exercise_early_morning;
+    if ("time_of_exercise_afternoon" in req.body)
+      user.time_of_exercise_afternoon = req.body.time_of_exercise_afternoon;
+    if ("time_of_exercise_evening" in req.body)
+      user.time_of_exercise_evening = req.body.time_of_exercise_evening;
     if ("health" in req.body) user.health = req.body.health;
     if ("x_coordinate" in req.body) user.x_coordinate = req.body.x_coordinate;
     if ("y_coordinate" in req.body) user.y_coordinate = req.body.y_coordinate;
+    if ("distance" in req.body) user.distance = req.body.distance;
 
     if (req.file) {
       const uploadImg = await cloudinary.uploader.upload(req.file.path, {
@@ -71,4 +85,4 @@ async function update(req, res) {
   }
 }
 
-export { getUser, update };
+export { getUser, update, findMatch };

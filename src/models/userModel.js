@@ -44,13 +44,13 @@ const UserSchema = new mongoose.Schema(
     participate_lifting_weights: {
       type: Boolean,
     },
-    time_of_exercises_earlymorning: {
+    time_of_exercise_early_morning: {
       type: Boolean,
     },
-    time_of_exercises_afternoon: {
+    time_of_exercise_afternoon: {
       type: Boolean,
     },
-    time_of_exercises_evening: {
+    time_of_exercise_evening: {
       type: Boolean,
     },
     health: {
@@ -69,6 +69,9 @@ const UserSchema = new mongoose.Schema(
     publicImageId: {
       type: String,
       maxlength: 1000,
+    },
+    distance: {
+      type: Number,
     },
   },
   { collection: "users" }
