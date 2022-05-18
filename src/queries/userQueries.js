@@ -13,4 +13,17 @@ async function findUserById(id) {
   }
 }
 
-export { findUserById };
+async function findByQuery(query) {
+  try {
+    const user = await userModel.find(query);
+    if (user) {
+      return { status: "ok", data: user };
+    } else {
+      return { status: "error", message: "user not found" };
+    }
+  } catch (error) {
+    return { status: "error", message: error };
+  }
+}
+
+export { findUserById, findByQuery };

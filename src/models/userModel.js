@@ -73,6 +73,9 @@ const UserSchema = new mongoose.Schema(
     dist: {
       type: Number,
     },
+    area: {
+      type: Boolean,
+    },
   },
   { collection: "users" }
 );

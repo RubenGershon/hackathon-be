@@ -1,4 +1,4 @@
-import { findUserById } from "../queries/userQueries.js";
+import { findUserById, findByQuery } from "../queries/userQueries.js";
 import { v2 as cloudinary } from "cloudinary";
 import fs from "fs";
 
@@ -15,8 +15,8 @@ async function getUser(req, res) {
 }
 
 async function findMatch(req, res) {
-  const response = await api.get("get_matches?id=1&dist=5")
-  res.status(200).json({ status: "ok", data:"blabla" });
+  const response = await api.get("get_matches?id=1&dist=5");
+  res.status(200).json({ status: "ok", data: "blabla" });
 }
 
 async function update(req, res) {
@@ -83,6 +83,23 @@ async function update(req, res) {
     });
     return;
   }
+
 }
 
-export { getUser, update, findMatch };
+async function getByQuery(req, res) {
+  let query = null;
+  if (req.query.queryStr) {
+    query = JSON.parse(req.query.queryStr);
+  } else if (req.query) query = req.query;
+  else query = query ? query : {};
+
+  const response = await findByQuery(query);
+  if (response.status === "ok") {
+    return res.status(200).send(response);
+  } else {
+    res.status(400).send(response);
+  }
+  return;
+}
+
+export { getUser, update, findMatch, getByQuery };
