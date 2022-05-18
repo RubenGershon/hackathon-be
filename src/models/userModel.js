@@ -24,44 +24,34 @@ const UserSchema = new mongoose.Schema(
     fitness_level: { type: Number, min: 0, max: 4 },
     exercise_frequency: { type: Number, min: 0, max: 5 },
     participate_running: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     participate_gym: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     participate_team: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     participate_dance: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     participate_yoga: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     participate_swimming: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     participate_lifting_weights: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     time_of_excercice_earlymorning: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     time_of_excercice_afternoon: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     time_of_excercice_evening: {
-      type: String,
-      maxlength: 50,
+      type: Boolean,
     },
     health: {
       type: Boolean,
