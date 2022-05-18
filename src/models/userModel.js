@@ -44,20 +44,31 @@ const UserSchema = new mongoose.Schema(
     participate_lifting_weights: {
       type: Boolean,
     },
-    time_of_excercice_earlymorning: {
+    time_of_exercises_earlymorning: {
       type: Boolean,
     },
-    time_of_excercice_afternoon: {
+    time_of_exercises_afternoon: {
       type: Boolean,
     },
-    time_of_excercice_evening: {
+    time_of_exercises_evening: {
       type: Boolean,
     },
     health: {
       type: Boolean,
     },
-    location: {
+    x_coordinate: {
       type: String,
+    },
+    y_coordinate: {
+      type: String,
+    },
+    imageUrl: {
+      type: String,
+      maxlength: 1000,
+    },
+    publicImageId: {
+      type: String,
+      maxlength: 1000,
     },
   },
   { collection: "users" }
