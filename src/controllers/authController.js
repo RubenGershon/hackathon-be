@@ -24,7 +24,8 @@ async function login(req, res) {
     const newobj = { _id: userData._id, email: userData.email };
     res.cookie("token", jwt.sign(newobj, process.env.JWT_SECRET), {
       httpOnly: true,
-      sameSite: "lax",
+      sameSite: "none",
+      secure: true
     });
 
     userData.password = null;
