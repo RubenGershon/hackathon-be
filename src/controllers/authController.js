@@ -13,8 +13,8 @@ async function signUp(req, res) {
     status: "ok",
   });
   return;
+  
 }
-
 async function login(req, res) {
   let userData = req.authUser;
 
@@ -24,8 +24,8 @@ async function login(req, res) {
     const newobj = { _id: userData._id, email: userData.email };
     res.cookie("token", jwt.sign(newobj, process.env.JWT_SECRET), {
       httpOnly: true,
-      sameSite: "none",
-      secure: true
+      sameSite: process.env.COOKIE_SAMESITE,
+      secure: process.env.COOKIE_SECURE,
     });
 
     userData.password = null;
