@@ -14,6 +14,7 @@ const upload = multer({ dest: process.env.UPLOAD_FOLDER + "/" });
 router.get("/getUser", tokenValidation, getUser);
 router.put("/update", tokenValidation, upload.single("image"), update);
 router.get("/findMatch", tokenValidation, findMatch);
+
 router.get("/query", getByQuery);
 
 export default router;
