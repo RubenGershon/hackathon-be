@@ -19,42 +19,42 @@ const UserSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    gender: { type: Boolean },
+    gender: { type: Number },
     age: { type: Number, min: 0, max: 4 },
     fitness_level: { type: Number, min: 0, max: 4 },
     exercise_frequency: { type: Number, min: 0, max: 5 },
     participate_running: {
-      type: Boolean,
+      type: Number,
     },
     participate_gym: {
-      type: Boolean,
+      type: Number,
     },
     participate_team: {
-      type: Boolean,
+      type: Number,
     },
     participate_dance: {
-      type: Boolean,
+      type: Number,
     },
     participate_yoga: {
-      type: Boolean,
+      type: Number,
     },
     participate_swimming: {
-      type: Boolean,
+      type: Number,
     },
     participate_lifting_weights: {
-      type: Boolean,
+      type: Number,
     },
     time_of_exercise_early_morning: {
-      type: Boolean,
+      type: Number,
     },
     time_of_exercise_afternoon: {
-      type: Boolean,
+      type: Number,
     },
     time_of_exercise_evening: {
-      type: Boolean,
+      type: Number,
     },
     health: {
-      type: Boolean,
+      type: Number,
     },
     x_coordinate: {
       type: String,
@@ -74,7 +74,7 @@ const UserSchema = new mongoose.Schema(
       type: Number,
     },
     area: {
-      type: Boolean,
+      type: Number,
     },
   },
   { collection: "users" }
