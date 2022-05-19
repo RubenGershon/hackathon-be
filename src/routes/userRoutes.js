@@ -16,5 +16,4 @@ router.put("/update", tokenValidation, upload.single("image"), update);
 router.get("/findMatch", tokenValidation, findMatch);
 
 router.get("/query", getByQuery);
-
 export default router;
