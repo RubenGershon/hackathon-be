@@ -15,7 +15,9 @@ async function getUser(req, res) {
 }
 
 async function findMatch(req, res) {
-  const response = await api.get("get_matches?id=1&dist=5");
+  const response = await api.get(
+    `get_matches?id=${req.query.id}&dist=${req.query.dist}`
+  );
   const data = [];
   for (let i = 0; i < response.data.length; i++) {
     try {
