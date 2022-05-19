@@ -12,12 +12,19 @@ async function authLoginValidation(req, res, next) {
     return;
   }
 
-  let response = await authQueries.findUser(body.email, {
-    _id: 1,
-    email: 1,
-    password: 1,
-    userName: 1,
-  });
+  let response = null;
+  try {
+    response = await authQueries.findUser(body.email, {
+      _id: 1,
+      email: 1,
+      password: 1,
+      userName: 1,
+    });
+  } catch (error) {
+    res.status(400).send({ status: "error", message: error });
+    return;
+  }
+
   if (response.status !== "ok") {
     res.status(404).send(response);
     return;

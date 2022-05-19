@@ -76,6 +76,7 @@ const UserSchema = new mongoose.Schema(
     area: {
       type: Number,
     },
+    mock_id: { type: Number },
   },
   { collection: "users" }
 );

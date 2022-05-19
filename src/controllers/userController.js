@@ -16,7 +16,18 @@ async function getUser(req, res) {
 
 async function findMatch(req, res) {
   const response = await api.get("get_matches?id=1&dist=5");
-  res.status(200).json({ status: "ok", data: "blabla" });
+  const data = [];
+  for (let i = 0; i < response.data.length; i++) {
+    try {
+      const findResponse = await findByQuery({ mock_id: response.data[i] });
+      if (findResponse.status === "ok")
+        data.push(findResponse.data[0].toObject());
+    } catch (error) {
+      //Do Nothing
+    }
+  }
+
+  res.status(200).json({ status: "ok", data: data });
 }
 
 async function update(req, res) {
@@ -56,6 +67,7 @@ async function update(req, res) {
     if ("y_coordinate" in req.body) user.y_coordinate = req.body.y_coordinate;
     if ("dist" in req.body) user.dist = req.body.dist;
     if ("area" in req.body) user.area = req.body.area;
+    if ("mock_id" in req.body) user.mock_id = req.body.mock_id;
 
     if (req.file) {
       const uploadImg = await cloudinary.uploader.upload(req.file.path, {
@@ -84,7 +96,6 @@ async function update(req, res) {
     });
     return;
   }
-
 }
 
 async function getByQuery(req, res) {

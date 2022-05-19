@@ -25,5 +25,5 @@ async function findByQuery(query) {
     return { status: "error", message: error };
   }
 }
-
+  
 export { findUserById, findByQuery };
